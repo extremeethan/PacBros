@@ -2,26 +2,17 @@ using UnityEngine;
 
 public class Pellet : MonoBehaviour
 {
-    //get Player
-    private Player player;
-    //get Collider2D
-    private Collider2D col;
-    //get Rigidbody2D
-    private Rigidbody2D rb;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public int points = 10;
+
+    protected virtual void Eat()// protected virtual void Eat() is a virtual method that can be overridden by subclasses
     {
-        player = FindFirstObjectByType<Player>();
-        col = GetComponent<Collider2D>();
-        rb = GetComponent<Rigidbody2D>();
+        FindFirstObjectByType<GameManager>().PelletEaten(this);
     }
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        // If the player enters the trigger, destroy the pellet
-        if (col.IsTouching(player.GetComponent<Collider2D>()))
-        {
-            Destroy(gameObject);
+        if(other.gameObject.layer == LayerMask.NameToLayer("Player")){
+            Eat();
         }
+
     }
 }
