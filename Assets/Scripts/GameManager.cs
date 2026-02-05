@@ -189,6 +189,8 @@ public class GameManager : MonoBehaviour
     }
     // If no lives remain (lives <= 0)
     else{
+        // Output a debug message to the console for troubleshooting
+        Debug.Log("GameOver called");
         // Call GameOver() to deactivate everything and show game over state
         GameOver();
     }

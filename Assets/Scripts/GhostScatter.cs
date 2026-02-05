@@ -18,6 +18,7 @@ public class GhostScatter : GhostBehavior
             // Set the next direction to a random available direction
             // Filter out the opposite direction to prevent going back and forth
             Vector2 oppositeDirection = -this.ghost.movement.direction;
+            // Create a list to store the valid directions
             System.Collections.Generic.List<Vector2> validDirections = new System.Collections.Generic.List<Vector2>();
             // Loop through the available directions and add the directions to the valid directions list
             foreach(Vector2 dir in node.availableDirections){
