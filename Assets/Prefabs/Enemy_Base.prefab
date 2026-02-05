@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   points: 200
+  speed: 2
 --- !u!114 &1036326163395180035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,6 +127,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96404b78797ab9d419560a12539e4876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Movement
+  speed: 8
+  speedMultiplier: 1
+  initialDirection: {x: 0, y: 0}
+  WallsLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &3910941466051593001
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,13 +396,13 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1102572564960793400, guid: 1e8b8cfdc0ae059419e3c59054a5057c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.06, y: 0.06}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
