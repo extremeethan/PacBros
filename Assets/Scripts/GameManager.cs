@@ -2,24 +2,28 @@
 using UnityEngine;
 // Import Unity's new Input System for handling keyboard and mouse input
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using TMPro;
 
 // GameManager class that inherits from MonoBehaviour, allowing it to be attached to a GameObject
 // This class manages the overall game state, score, lives, and game flow
 public class GameManager : MonoBehaviour
 {
+    public Image[] lifeIcons;
+    public TextMeshProUGUI scoreText;
     // Static property that provides a singleton instance of GameManager
     // 'get' is public (anyone can read it), 'set' is private (only this class can set it)
     // This ensures only one GameManager exists in the scene
     public static GameManager Instance { get; private set; }
-    
+
     // Array of GameObject references to all ghost enemies in the game
     // Public so it can be assigned in the Unity Inspector
     public GameObject[] ghosts;
-    
+
     // GameObject reference to the Pacman player character
     // Public so it can be assigned in the Unity Inspector
     public GameObject pacman;
-    
+
     // Transform reference to the parent object containing all pellet GameObjects
     // Public so it can be assigned in the Unity Inspector
     public Transform pellets;
@@ -27,12 +31,12 @@ public class GameManager : MonoBehaviour
     // Ghost multiplier that increases each time a ghost is eaten during power pellet mode
     // Starts at 1 and increases (1, 2, 3, 4...) for scoring multiplier effect
     // Public getter allows reading, private setter only allows internal modification
-    public int ghostMultiplier {get; private set; } = 1;
+    public int ghostMultiplier { get; private set; } = 1;
 
     // Current game score - tracks points earned from eating pellets and ghosts
     // Public getter allows other scripts to read the score, private setter keeps it controlled
     public int score { get; private set; }
-    
+
     // Current number of lives/remaining chances the player has
     // Public getter allows reading, private setter ensures lives are only changed through proper methods
     public int lives { get; private set; }
@@ -57,52 +61,64 @@ public class GameManager : MonoBehaviour
         }
     }
 
-   // Start is called before the first frame update, after Awake()
-   // This is where we initialize the game when the scene loads
-   private void Start(){
-    // Call NewGame() to set up the initial game state (score, lives, round)
-    NewGame();
-   }
-   
-   // Update is called once per frame (typically 60 times per second)
-   // This continuously checks for player input to restart the game when it's over
-   private void Update()
-   {
-    // Check if any key on the keyboard was pressed this frame
-    // First checks if Keyboard.current exists (keyboard is available)
-    // Then checks if anyKey.wasPressedThisFrame (any key was just pressed)
-    // This uses Unity's new Input System instead of the old Input class
-    bool anyKeyPressed = (Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame); 
-    
-    // If the player has no lives left (game over) AND any key was pressed
-    if(this.lives <= 0 && anyKeyPressed){
-        // Restart the game by calling NewGame() to reset everything
+    // Start is called before the first frame update, after Awake()
+    // This is where we initialize the game when the scene loads
+    private void Start() {
+        // Call NewGame() to set up the initial game state (score, lives, round)
         NewGame();
     }
-   }
 
-  // Initializes a new game from scratch - resets score, lives, and starts first round
-  private void NewGame(){
-    // Reset the score to 0 at the start of a new game
-    SetScore(0);
-    // Set the player's lives to 3 (standard Pacman starting lives)
-    SetLives(3);
-    // Start the first round by resetting pellets and game objects
-    NewRound();
-  }
-  
-  // Sets the score to a specific value
-  // Private method ensures score can only be changed through controlled methods
-  private void SetScore(int newScore){
+    // Update is called once per frame (typically 60 times per second)
+    // This continuously checks for player input to restart the game when it's over
+    private void Update()
+    {
+        // Check if any key on the keyboard was pressed this frame
+        // First checks if Keyboard.current exists (keyboard is available)
+        // Then checks if anyKey.wasPressedThisFrame (any key was just pressed)
+        // This uses Unity's new Input System instead of the old Input class
+        bool anyKeyPressed = (Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame);
+
+        // If the player has no lives left (game over) AND any key was pressed
+        if (this.lives <= 0 && anyKeyPressed) {
+            // Restart the game by calling NewGame() to reset everything
+            NewGame();
+        }
+    }
+
+    // Initializes a new game from scratch - resets score, lives, and starts first round
+    private void NewGame() {
+        // Reset the score to 0 at the start of a new game
+        SetScore(0);
+        // Set the player's lives to 3 (standard Pacman starting lives)
+        SetLives(3);
+        // Start the first round by resetting pellets and game objects
+        NewRound();
+    }
+
+    // Sets the score to a specific value
+    // Private method ensures score can only be changed through controlled methods
+    private void SetScore(int newScore)
+  {  
     // Update the score property with the new value
+    // Updated this to show the score - Bryan S (2/6/2026)
     this.score = newScore;
+        if (scoreText != null)
+        {
+        scoreText.text = "" +  this.score;
+        }
   }
   
   // Sets the number of lives to a specific value
   // Private method ensures lives can only be changed through controlled methods
-  private void SetLives(int newLives){
+  private void SetLives(int newLives)
+  {  
     // Update the lives property with the new value
+    // Updated this to show the lives - Bryan S (2/6/2026)
     this.lives = newLives;
+    for (int i = 0; i < lifeIcons.Length; i++)
+        {
+            lifeIcons[i].enabled = (i < this.lives);
+        }
   }
 
   // Starts a new round - reactivates all pellets and resets game object positions
