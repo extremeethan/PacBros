@@ -160,7 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Ghost
   initialBehavior: {fileID: 1877920452455716552}
   points: 200
-  target: {fileID: 0}
+  target: {fileID: 564966448506997976, guid: fe80cc94ec632d44b8dbee969f0601b6, type: 3}
 --- !u!114 &1877920452455716552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,3 +213,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GhostHome
   duration: 0
+  inside: {fileID: 0}
+  outside: {fileID: 0}

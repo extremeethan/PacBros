@@ -71,14 +71,23 @@ public class GameManager : MonoBehaviour
     // Check if any key on the keyboard was pressed this frame
     // First checks if Keyboard.current exists (keyboard is available)
     // Then checks if anyKey.wasPressedThisFrame (any key was just pressed)
-    // This uses Unity's new Input System instead of the old Input class
-    bool anyKeyPressed = (Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame); 
-    
+    bool anyKeyPressed = (Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame);
+    bool escKeyPressed = (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame);
+    // If the escape key was pressed
+    if(escKeyPressed){
+        // Quit the game
+        QuitGame();
+    }
     // If the player has no lives left (game over) AND any key was pressed
     if(this.lives <= 0 && anyKeyPressed){
         // Restart the game by calling NewGame() to reset everything
         NewGame();
     }
+   }
+   private void QuitGame(){
+    Debug.Log("Quitting game");
+    // Quit the game
+    Application.Quit();
    }
 
   // Initializes a new game from scratch - resets score, lives, and starts first round

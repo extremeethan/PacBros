@@ -9,8 +9,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1036326163395180035, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
+      propertyPath: speed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1036326163395180035, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: initialDirection.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1036326163395180035, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
+      propertyPath: obstacleLayer.m_Bits
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 1171715956672715030, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_Color.b
@@ -32,10 +40,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3561041511074791110, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
-      propertyPath: initialBehavior
-      value: 
-      objectReference: {fileID: 4867529696109496468}
     - target: {fileID: 3735754711204050458, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_Name
       value: Ghost_Clyde
@@ -84,19 +88,118 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 7391304e6dcdc594484288107bfd217f, type: 3}
-    m_RemovedComponents: []
+    - target: {fileID: 9135937089359219227, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6581404695421150808, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3735754711204050458, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3667536896705488530}
+    - targetCorrespondingSourceObject: {fileID: 3735754711204050458, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4679490145677369127}
+    - targetCorrespondingSourceObject: {fileID: 3735754711204050458, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1297673134782975429}
+    - targetCorrespondingSourceObject: {fileID: 3735754711204050458, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8006423305842728496}
+    - targetCorrespondingSourceObject: {fileID: 3735754711204050458, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6961159279645584120}
+    - targetCorrespondingSourceObject: {fileID: 3735754711204050458, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5246695382754102749}
   m_SourcePrefab: {fileID: 100100000, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
---- !u!114 &4867529696109496468 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2607728198900302118, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
+--- !u!1 &6081094930622742440 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3735754711204050458, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
   m_PrefabInstance: {fileID: 7474975389039544754}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+--- !u!114 &3667536896705488530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6081094930622742440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f95467d9c756bad4191dc501274cd8ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GhostBehavior
+  duration: 0
+--- !u!114 &4679490145677369127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6081094930622742440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aca7ad10f1dc2d48bd3cf8540a5b9a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Ghost
+  initialBehavior: {fileID: 5246695382754102749}
+  points: 200
+  target: {fileID: 564966448506997976, guid: fe80cc94ec632d44b8dbee969f0601b6, type: 3}
+--- !u!114 &1297673134782975429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6081094930622742440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56fa42ec9ea2684abf0b33932385bec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GhostScatter
+  duration: 7
+--- !u!114 &8006423305842728496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6081094930622742440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58322fc2cf1facf4e9c7ce4ad34aded6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GhostFrightened
+  duration: 16
+--- !u!114 &6961159279645584120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6081094930622742440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ebd81578546d2742af40008f8b4870f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GhostChase
+  duration: 5
+--- !u!114 &5246695382754102749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6081094930622742440}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 653602e770e365947a52e55e1c6285d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GhostHome
+  duration: 0
+  inside: {fileID: 0}
+  outside: {fileID: 0}

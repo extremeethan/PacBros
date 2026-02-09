@@ -12,6 +12,7 @@ public class Ghost : MonoBehaviour
     public int points = 200; // The points for the ghost
     public GameObject target; // The target to chase
 
+// Awake is called when the script instance is being loaded this awake method is used to initialize the ghost
     private void Awake()
     {
         // Get the movement component of the ghost
@@ -27,11 +28,13 @@ public class Ghost : MonoBehaviour
         // Get the initial behavior of the ghost
         this.initialBehavior = this.scatter;
     }
+// Start is called before the first frame update
 public void Start()
 {
     ResetState();
 }
 
+// ResetState is used to reset the state of the ghost
     public void ResetState(){
         // Set the ghost to active
         this.gameObject.SetActive(true);
@@ -52,6 +55,7 @@ public void Start()
             this.initialBehavior.Enable();
         }
     }
+// OnCollisionEnter2D is called when the ghost collides with another object
     private void OnCollisionEnter2D(Collision2D collision){
         // If the ghost collides with the player
         if(collision.gameObject.layer == LayerMask.NameToLayer("Player"))

@@ -72,7 +72,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.16, y: 0.13}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -129,7 +129,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 8c3087f14f6c62b4e80b25df0276968e, type: 3}
+  m_Sprite: {fileID: -6888756438569675735, guid: 7e7d9f2cd0002d642965730949f4649f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -151,3 +151,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a776b15b9f4275e4e85cd43df568d2a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pellet
+  points: 10
