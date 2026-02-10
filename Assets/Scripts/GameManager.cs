@@ -52,9 +52,8 @@ public class GameManager : MonoBehaviour
         // Check if no GameManager instance has been set yet (first time this runs)
         if (Instance == null)
         {
-            // Set this GameManager as the singleton instance
-            // This makes it accessible from anywhere via GameManager.Instance
             Instance = this;
+            DontDestroyOnLoad(gameObject); // Keep GameManager across scene loads (Game Over, YouWin, next level) so score/lives persist
         }
         // If an instance already exists (duplicate GameManager found)
         else
@@ -311,8 +310,12 @@ private void ResetGhostMultiplier(){
     // This means the next ghost eaten will give base points (no multiplier)
     this.ghostMultiplier = 1;
 }
-// Loads the next level
+// Loads the next level or YouWin when Level 2 is beaten
 private void LoadNextLevel(){
-    SceneManager.LoadScene("Level_02");
+    string currentScene = SceneManager.GetActiveScene().name;
+    if (currentScene == "Level_02")
+        SceneManager.LoadScene("YouWin");
+    else
+        SceneManager.LoadScene("Level_02");
 }
 }

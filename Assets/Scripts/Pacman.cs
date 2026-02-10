@@ -32,8 +32,8 @@ public class Pacman : MonoBehaviour
     // Rotate the pacman based on the angle Radians to Degrees using the angle and the vector3 forward
     this.transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.forward);
     }
-    public void ResetState(){
-        this.gameObject.SetActive(true);
-        this.movement.ResetState();
+    public void ResetState(){ // this is the reset state method
+        this.gameObject.SetActive(true); // set the game object to active
+        this.movement.ResetState(); // reset the state of the movement
     }
 }

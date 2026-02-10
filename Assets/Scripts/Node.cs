@@ -6,15 +6,15 @@ public class Node : MonoBehaviour
     public LayerMask obstacleLayer; // The layer mask of the obstacles
     public List<Vector2> availableDirections {get; private set;} // The available directions for the node
 
-    private void Start()
+    private void Start() // this is the start method
     {
         // Initialize the available directions list
         this.availableDirections = new List<Vector2>();
         // Check the available directions for the node
         CheckAvailableDirections(Vector2.up);
-        CheckAvailableDirections(Vector2.down);
-        CheckAvailableDirections(Vector2.left);
-        CheckAvailableDirections(Vector2.right);
+        CheckAvailableDirections(Vector2.down); // check the available directions for the node down
+        CheckAvailableDirections(Vector2.left); // check the available directions for the node left
+        CheckAvailableDirections(Vector2.right); // check the available directions for the node right
     }
 
     // Check the available directions for the node
