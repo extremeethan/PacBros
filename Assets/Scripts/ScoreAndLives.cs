@@ -16,8 +16,8 @@ public class ScoreAndLives : MonoBehaviour
        // this is the method to check if the game manager is null
        if (GameManager.Instance == null) return;
        // this is the method to update the score
-       if (scoreText != null) scoreText.text = "Score: " + GameManager.Instance.score;
+       if (scoreText != null) scoreText.text = " " + GameManager.Instance.score;
        // this is the method to update the lives
-       if (livesText != null) livesText.text = "Lives: " + GameManager.Instance.lives;
+       if (livesText != null) livesText.text = "LIVES: " + GameManager.Instance.lives;
    }
 }

@@ -155,7 +155,8 @@ public class GameManager : MonoBehaviour
   
   // Called when the game is over (player has no lives left)
   // Deactivates all game objects to show the game over state
-  private void GameOver(){
+  private void GameOver()
+    {
     // Loop through all ghost GameObjects in the array
     Debug.Log("[GameManager] GameOver() - deactivating ghosts");
     for (int i = 0 ; i < this.ghosts.Length; i++){
@@ -167,10 +168,7 @@ public class GameManager : MonoBehaviour
     // SetActive(false) makes Pacman invisible and stops player control
     Debug.Log("[GameManager] GameOver() - deactivating Pacman");
     this.pacman.gameObject.SetActive(false);
-    Debug.Log("[GameManager] GameOver() - calling NewGame()");
-    if(Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame){
-    NewGame();
-    }
+        SceneManager.LoadScene("GameOver");
  }
   
   // Block "ghost eaten" for this long after a power pellet is eaten (stops ghosts dying with no contact)
