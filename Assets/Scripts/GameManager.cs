@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 // This class manages the overall game state, score, lives, and game flow
 public class GameManager : MonoBehaviour
 {
-    public GameOverScreen gameOverScreen;
     // Static property that provides a singleton instance of GameManager
     // 'get' is public (anyone can read it), 'set' is private (only this class can set it)
     // This ensures only one GameManager exists in the scene
@@ -151,9 +150,6 @@ public class GameManager : MonoBehaviour
   // Deactivates all game objects to show the game over state
   private void GameOver()
     {
-        gameOverScreen.gameObject.SetActive(true);
-        gameOverScreen.Setup(score);
-
     // Loop through all ghost GameObjects in the array
     for (int i = 0 ; i < this.ghosts.Length; i++){
         // Deactivate each ghost GameObject
@@ -163,7 +159,7 @@ public class GameManager : MonoBehaviour
     // Deactivate the Pacman GameObject
     // SetActive(false) makes Pacman invisible and stops player control
     this.pacman.gameObject.SetActive(false);
-    NewGame();
+        SceneManager.LoadScene("GameOver");
  }
   
   // Block "ghost eaten" for this long after a power pellet is eaten (stops ghosts dying with no contact)
