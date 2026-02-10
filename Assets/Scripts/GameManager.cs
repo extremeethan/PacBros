@@ -25,6 +25,13 @@ public class GameManager : MonoBehaviour
     // Public so it can be assigned in the Unity Inspector
     public Transform pellets;
 
+    // Audio
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip pelletSound;
+    public AudioClip pacmanDeathSound;
+    public AudioClip powerPelletSound;
+
     // Ghost multiplier that increases each time a ghost is eaten during power pellet mode
     // Starts at 1 and increases (1, 2, 3, 4...) for scoring multiplier effect
     // Public getter allows reading, private setter only allows internal modification
@@ -213,9 +220,14 @@ public class GameManager : MonoBehaviour
  // Called when a regular pellet is eaten by Pacman
  // Handles pellet deactivation, scoring, and checks for round completion
  public void PelletEaten(Pellet pellet){
-    // Deactivate the pellet GameObject so it disappears and can't be eaten again
-    // SetActive(false) makes it invisible and disables its collider
-    pellet.gameObject.SetActive(false);
+        // pellet sound
+        if (audioSource != null && pelletSound != null)
+        {
+            audioSource.PlayOneShot(pelletSound);
+        }
+        // Deactivate the pellet GameObject so it disappears and can't be eaten again
+        // SetActive(false) makes it invisible and disables its collider
+        pellet.gameObject.SetActive(false);
     
     // Add the pellet's point value to the current score
     // Uses the current score plus the pellet's points property
@@ -238,9 +250,14 @@ public class GameManager : MonoBehaviour
  // Called when a power pellet is eaten by Pacman
  // Handles power pellet effects like making ghosts vulnerable
  public void PowerPelletEaten(PowerPellet powerPellet){
-    // First handle it like a regular pellet (deactivate, add points, check for round completion)
-    // PowerPellet inherits from Pellet, so this works correctly
-    PelletEaten(powerPellet);
+
+        if (audioSource != null && powerPelletSound != null)
+        {
+            audioSource.PlayOneShot(powerPelletSound);
+        }
+        // First handle it like a regular pellet (deactivate, add points, check for round completion)
+        // PowerPellet inherits from Pellet, so this works correctly
+        PelletEaten(powerPellet);
     
     // Schedule the ghost multiplier to reset after the power pellet duration expires
     // Invoke calls ResetGhostMultiplier() after powerPellet.duration seconds
