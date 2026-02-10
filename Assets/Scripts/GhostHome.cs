@@ -6,6 +6,21 @@ using System.Collections;
 // public class ClassName : BaseClass = define a class that inherits from GhostBehavior (which inherits MonoBehaviour)
 public class GhostHome : GhostBehavior
 {
+  // Ghost starts in home; when they exit, teleport to maze start and switch to scatter
+  [Header("Maze Start (teleport from home)")]
+  public Vector3 mazeStartPosition = new Vector3(0f, 0f, 0f);  // set your exact coords here
+
+  private void OnDisable()
+  {
+    if (ghost == null || ghost.scatter == null)
+      return;
+    if (ghost.IsResetting)
+      return;
+    ghost.transform.position = mazeStartPosition;
+    ghost.scatter.Enable();
+  }
+
+  /*
   // public Type name; = field visible in Inspector, assignable in Editor. Transform = position/rotation/scale of a GameObject
   // "inside" = the point inside the ghost home (center of the pen)
   public Transform inside;
@@ -81,4 +96,5 @@ public class GhostHome : GhostBehavior
     this.ghost.movement.enabled = true;
 
   }
+  */
 }
