@@ -44,10 +44,10 @@ public class Movement : MonoBehaviour
         this.direction = this.initialDirection;
         // Set the next direction to zero
         this.nextDirection = Vector2.zero;
-        // Set the position to the starting position
+        // Set the position to the starting position and keep rigidbody in sync
         this.transform.position = this.startingPosition;
-        // Set the rigidbody to not be kinematic
-        this.rigidbody.isKinematic = false;
+        this.rigidbody.position = new Vector2(this.startingPosition.x, this.startingPosition.y);
+        this.rigidbody.bodyType = RigidbodyType2D.Dynamic;
     }
     private void FixedUpdate()
     {
