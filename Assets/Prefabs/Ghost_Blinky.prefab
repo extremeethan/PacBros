@@ -21,60 +21,20 @@ PrefabInstance:
       value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 1171715956672715030, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
-      propertyPath: m_Size.x
-      value: 3.97
-      objectReference: {fileID: 0}
-    - target: {fileID: 1171715956672715030, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
-      propertyPath: m_Size.y
-      value: 3.84
-      objectReference: {fileID: 0}
-    - target: {fileID: 1171715956672715030, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 5830694933855508796, guid: 5f2a44c176a07e148ac13a7cf646b2e7, type: 3}
-    - target: {fileID: 1171715956672715030, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1171715956672715030, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1171715956672715030, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1171715956672715030, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2656216554248468665, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
-      propertyPath: m_Size.x
-      value: 3.92
-      objectReference: {fileID: 0}
-    - target: {fileID: 2656216554248468665, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
-      propertyPath: m_Size.y
-      value: 3.44
-      objectReference: {fileID: 0}
-    - target: {fileID: 2656216554248468665, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 1484275164838876734, guid: 51c07ae7516b7b24c88d0bf15a0bb547, type: 3}
-    - target: {fileID: 2656216554248468665, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3735754711204050458, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_Name
       value: Ghost_Blinky
-      objectReference: {fileID: 0}
-    - target: {fileID: 3910941466051593001, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6794236725312374253, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6802379879067232844, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_Enabled
@@ -82,15 +42,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7835570857650871489, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7835570857650871489, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7835570857650871489, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.3
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7835570857650871489, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -200,7 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Ghost
   initialBehavior: {fileID: 1877920452455716552}
   points: 200
-  target: {fileID: 0}
+  target: {fileID: 564966448506997976, guid: fe80cc94ec632d44b8dbee969f0601b6, type: 3}
 --- !u!114 &1877920452455716552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,6 +212,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653602e770e365947a52e55e1c6285d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GhostHome
-  duration: 8
+  duration: 0
   inside: {fileID: 0}
   outside: {fileID: 0}
