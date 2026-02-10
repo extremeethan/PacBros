@@ -21,32 +21,16 @@ PrefabInstance:
       value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 1171715956672715030, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
-      propertyPath: m_Size.x
-      value: 3.97
-      objectReference: {fileID: 0}
-    - target: {fileID: 1171715956672715030, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
-      propertyPath: m_Size.y
-      value: 3.84
-      objectReference: {fileID: 0}
-    - target: {fileID: 1171715956672715030, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 7723652632321733531, guid: f1359aed4ae8150428aae05890fad8cf, type: 3}
-    - target: {fileID: 1171715956672715030, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.33333334
       objectReference: {fileID: 0}
     - target: {fileID: 1171715956672715030, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.73333335
       objectReference: {fileID: 0}
     - target: {fileID: 1171715956672715030, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1171715956672715030, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
+      value: 0.972549
       objectReference: {fileID: 0}
     - target: {fileID: 2607728198900302118, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: duration
@@ -59,30 +43,6 @@ PrefabInstance:
     - target: {fileID: 3735754711204050458, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_Name
       value: Ghost_Clyde
-      objectReference: {fileID: 0}
-    - target: {fileID: 3910941466051593001, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4438080734060806004, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6794236725312374253, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7835570857650871489, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7835570857650871489, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7835570857650871489, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 7835570857650871489, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -123,10 +83,6 @@ PrefabInstance:
     - target: {fileID: 7835570857650871489, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7835570857650871489, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9135937089359219227, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_Sprite
@@ -244,6 +200,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653602e770e365947a52e55e1c6285d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GhostHome
-  duration: 8
+  duration: 0
   inside: {fileID: 0}
   outside: {fileID: 0}

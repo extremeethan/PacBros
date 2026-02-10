@@ -2,7 +2,6 @@
 using UnityEngine;
 // Import Unity's new Input System for handling keyboard and mouse input
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 // GameManager class that inherits from MonoBehaviour, allowing it to be attached to a GameObject
 // This class manages the overall game state, score, lives, and game flow
@@ -161,17 +160,18 @@ public class GameManager : MonoBehaviour
     NewGame();
  }
   
-  // Block "ghost eaten" for this long after a power pellet is eaten (stops ghosts dying with no contact)
-  public static float PowerPelletEatenTime { get; private set; } = -999f;
-  const float GhostEatBlockSeconds = 2f;
-
+  // Called when a ghost is eaten by Pacman (during power pellet mode)
+  // Calculates points with multiplier and increases the multiplier for next ghost
   public void GhostEaten(Ghost ghost){
-    if (Time.time - PowerPelletEatenTime < GhostEatBlockSeconds)
-      return;
+    // Calculate points by multiplying the ghost's base points by the current multiplier
+    // First ghost = 200 * 1, second = 200 * 2, third = 200 * 3, etc.
     int points = ghost.points * this.ghostMultiplier;
+    // Add the calculated points to the current score
+    // Uses the current score plus the new points
     SetScore(this.score + points);
+    // Increment the multiplier for the next ghost eaten
+    // This increases the point value for consecutive ghost eats
     this.ghostMultiplier++;
-    ghost.EatenByPlayer();
 }
  
  // Called when Pacman is eaten by a ghost
@@ -220,13 +220,16 @@ public class GameManager : MonoBehaviour
     // Only proceed if pellets Transform exists AND no pellets remain
     if(this.pellets != null && !HasRemainingPellets()){
         // Output debug message when all pellets are collected
-        Debug.Log("All pellets eaten - loading next level");
+        Debug.Log("All pellets eaten - starting new round");
         
-        // Hide Pacman temporarily before loading the next level
+        // Hide Pacman temporarily before starting the next round
+        // SetActive(false) makes Pacman invisible
         this.pacman.gameObject.SetActive(false);
         
-        // Wait 3 seconds then load the next level (Level_02)
-        Invoke(nameof(LoadNextLevel), 3f);
+        // Wait 3 seconds then start a new round
+        // Invoke schedules NewRound() to be called after 3 seconds
+        // This gives a brief celebration pause before the next round
+        Invoke(nameof(NewRound), 3f);
     }
 }
  
@@ -242,18 +245,8 @@ public class GameManager : MonoBehaviour
     // This ensures the multiplier resets when the power pellet effect ends
     Invoke(nameof(ResetGhostMultiplier), powerPellet.duration);
     
-    PowerPelletEatenTime = Time.time;
-    // Put all ghosts in the array into frightened state
-    for (int i = 0; i < ghosts.Length; i++)
-    {
-        Ghost g = ghosts[i].GetComponent<Ghost>();
-        if (g != null)
-        {
-            g.chase.Disable();
-            g.scatter.Disable();
-            g.frightened.Enable(powerPellet.duration);
-        }
-    }
+    // TODO: Change ghost state to vulnerable/frightened mode
+    // This would make ghosts edible and change their behavior
 }
 
 // Checks if there are any active pellets remaining in the scene
@@ -285,9 +278,5 @@ private void ResetGhostMultiplier(){
     // Set the multiplier back to its starting value of 1
     // This means the next ghost eaten will give base points (no multiplier)
     this.ghostMultiplier = 1;
-}
-// Loads the next level
-private void LoadNextLevel(){
-    SceneManager.LoadScene("Level_02");
 }
 }
