@@ -192,10 +192,15 @@ public class GameManager : MonoBehaviour
     // Output a debug message to the console for troubleshooting
     // Helps identify when and why Pacman is being disabled
     Debug.Log("PacmanEaten called");
-    
-    // Immediately hide Pacman when eaten
-    // SetActive(false) makes Pacman invisible and stops movement
-    this.pacman.gameObject.SetActive(false);
+
+    if (audioSource != null && pacmanDeathSound != null)
+    {
+        audioSource.PlayOneShot(pacmanDeathSound);
+    }
+
+        // Immediately hide Pacman when eaten
+        // SetActive(false) makes Pacman invisible and stops movement
+        this.pacman.gameObject.SetActive(false);
     
     // Decrease the player's lives by 1
     // Uses current lives minus 1
