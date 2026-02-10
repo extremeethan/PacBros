@@ -69,12 +69,16 @@ PrefabInstance:
       value: Ghost_Blinky
       objectReference: {fileID: 0}
     - target: {fileID: 3910941466051593001, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
+      propertyPath: m_Name
+      value: Dead
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910941466051593001, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6794236725312374253, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6802379879067232844, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_Enabled
@@ -102,7 +106,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7835570857650871489, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7835570857650871489, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -139,7 +143,7 @@ PrefabInstance:
     - target: {fileID: 9135937089359219227, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: d65aa956b7569874fab274083826a77f, type: 3}
+      objectReference: {fileID: 2241533397146464785, guid: 17db5f251aa20af42a725609cc6e9c5b, type: 3}
     - target: {fileID: 9135937089359219227, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -201,6 +205,9 @@ MonoBehaviour:
   initialBehavior: {fileID: 1877920452455716552}
   points: 200
   target: {fileID: 0}
+  normalSprite: {fileID: 6761940003136388516}
+  frightenedSprite: {fileID: 9016160481861140738}
+  deadSprite: {fileID: 1517810894288848838}
 --- !u!114 &1877920452455716552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,5 +260,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GhostHome
   duration: 8
-  inside: {fileID: 0}
-  outside: {fileID: 0}
+  mazeStartPosition: {x: 0, y: 2.5, z: -1}
+--- !u!1 &1517810894288848838 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3910941466051593001, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
+  m_PrefabInstance: {fileID: 2546271557443372271}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6761940003136388516 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9115585704634972491, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
+  m_PrefabInstance: {fileID: 2546271557443372271}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9016160481861140738 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6794236725312374253, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
+  m_PrefabInstance: {fileID: 2546271557443372271}
+  m_PrefabAsset: {fileID: 0}
