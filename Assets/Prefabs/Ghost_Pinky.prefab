@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6951797253015783474}
   - component: {fileID: 4256145989711145560}
+  - component: {fileID: 6853069879531510582}
   m_Layer: 7
   m_Name: 'Freightened '
   m_TagString: Untagged
@@ -81,16 +82,35 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 1484275164838876734, guid: 51c07ae7516b7b24c88d0bf15a0bb547, type: 3}
+  m_Sprite: {fileID: 3840915593547767280, guid: 5b5d714f111af3441987e38f225993c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.92, y: 3.44}
+  m_Size: {x: 3.61, y: 2.62}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &6853069879531510582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989210364455119859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8da764fe88f0be14cb5831ac48e0773b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimatedSprite
+  sprites:
+  - {fileID: 3840915593547767280, guid: 5b5d714f111af3441987e38f225993c4, type: 3}
+  - {fileID: -9112561270005345176, guid: c2a16433f294db445a77896b551d80d6, type: 3}
+  - {fileID: -7667174023030367869, guid: aa4385632c063a54298fe4b2af5a44d8, type: 3}
+  - {fileID: -9112561270005345176, guid: c2a16433f294db445a77896b551d80d6, type: 3}
+  animationTime: 0.05
+  loop: 1
 --- !u!1 &7587918446011624924
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,6 +121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8823917320434877041}
   - component: {fileID: 5126663024356430638}
+  - component: {fileID: 6613788969643567123}
   m_Layer: 7
   m_Name: Defeated
   m_TagString: Untagged
@@ -172,16 +193,33 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 2241533397146464785, guid: 17db5f251aa20af42a725609cc6e9c5b, type: 3}
+  m_Sprite: {fileID: -2138492258153623965, guid: c95d6379ee70ea744af5fc34d3488bcf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.11, y: 2.07}
+  m_Size: {x: 3.61, y: 2.62}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &6613788969643567123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7587918446011624924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8da764fe88f0be14cb5831ac48e0773b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimatedSprite
+  sprites:
+  - {fileID: -2138492258153623965, guid: c95d6379ee70ea744af5fc34d3488bcf, type: 3}
+  - {fileID: 3330832990983869611, guid: d8ab41bb001845742b34795694f392b7, type: 3}
+  animationTime: 0.5
+  loop: 1
 --- !u!1001 &7474975389039544754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -212,12 +250,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1171715956672715030, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_Size.y
-      value: 3.86
+      value: 3.88
       objectReference: {fileID: 0}
     - target: {fileID: 1171715956672715030, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -2531241511545790211, guid: c6f7b7e4f9d891142bb3355216c8f3ca, type: 3}
+      objectReference: {fileID: 6698816943851487893, guid: 65689bc9686b2b64a807cfcdbc822910, type: 3}
     - target: {fileID: 1171715956672715030, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -272,11 +310,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7835570857650871489, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7835570857650871489, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 7835570857650871489, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -349,6 +387,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3735754711204050458, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5246695382754102749}
+    - targetCorrespondingSourceObject: {fileID: 9115585704634972491, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5727174896400729622}
   m_SourcePrefab: {fileID: 100100000, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
 --- !u!4 &793188431555695987 stripped
 Transform:
@@ -360,6 +401,25 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9115585704634972491, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
   m_PrefabInstance: {fileID: 7474975389039544754}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5727174896400729622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818718013748687097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8da764fe88f0be14cb5831ac48e0773b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimatedSprite
+  sprites:
+  - {fileID: 6698816943851487893, guid: 65689bc9686b2b64a807cfcdbc822910, type: 3}
+  - {fileID: -6245913451696732513, guid: a22371ffef5b5564aa3020e57f4309b5, type: 3}
+  - {fileID: -8805949303207006079, guid: de3dc9235647dfe419eca8d79c64ba75, type: 3}
+  - {fileID: -6245913451696732513, guid: a22371ffef5b5564aa3020e57f4309b5, type: 3}
+  animationTime: 0.05
+  loop: 1
 --- !u!1 &6081094930622742440 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3735754711204050458, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
