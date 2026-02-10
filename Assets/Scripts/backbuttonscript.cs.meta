@@ -1,2 +1,13 @@
 fileFormatVersion: 2
 guid: f2ebcb5cd9ef1184ba300f7ecf9cb668
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - audioSource: {instanceID: 0}
+  - menuButtonSound: {fileID: 8300000, guid: 7c679dfa3c09620468013aaa5742f880, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
