@@ -42,7 +42,7 @@ public class GhostFrightened : GhostBehavior
         }
         else if (Ghost.IsPlayer(other.gameObject) && Time.time >= _ignoreEatUntil)
         {
-            FindObjectOfType<GameManager>().GhostEaten(ghost);
+            FindFirstObjectByType<GameManager>().GhostEaten(ghost);
         }
     }
 
@@ -50,6 +50,6 @@ public class GhostFrightened : GhostBehavior
     {
         if (!enabled || Time.time < _ignoreEatUntil) return;
         if (Ghost.IsPlayer(collision.gameObject))
-            FindObjectOfType<GameManager>().GhostEaten(ghost);
+            FindFirstObjectByType<GameManager>().GhostEaten(ghost);
     }
 }

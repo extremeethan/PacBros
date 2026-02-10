@@ -75,13 +75,16 @@ public void Start()
         SetSpriteState(SpriteState.Dead);
         movement.enabled = false;
         Vector3 housePosition = home != null ? home.mazeStartPosition : transform.position;
+        housePosition.z = -1f;
         transform.position = housePosition;
+        movement.rigidbody.position = new Vector2(housePosition.x, housePosition.y);
         StartCoroutine(RespawnAfterEaten());
     }
 
     private IEnumerator RespawnAfterEaten(){
         yield return new WaitForSeconds(3f);
         SetSpriteState(SpriteState.Normal);
+        movement.rigidbody.position = new Vector2(transform.position.x, transform.position.y);
         movement.enabled = true;
         scatter.Enable();
     }
@@ -89,13 +92,13 @@ public void Start()
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (IsPlayer(collision.gameObject) && !frightened.enabled)
-            FindObjectOfType<GameManager>().PacmanEaten();
+            FindFirstObjectByType<GameManager>().PacmanEaten();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (IsPlayer(other.gameObject) && !frightened.enabled)
-            FindObjectOfType<GameManager>().PacmanEaten();
+            FindFirstObjectByType<GameManager>().PacmanEaten();
     }
 
     internal static bool IsPlayer(GameObject go)
