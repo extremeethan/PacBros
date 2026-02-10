@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 // This class manages the overall game state, score, lives, and game flow
 public class GameManager : MonoBehaviour
 {
+    public GameOverScreen gameOverScreen;
     // Static property that provides a singleton instance of GameManager
     // 'get' is public (anyone can read it), 'set' is private (only this class can set it)
     // This ensures only one GameManager exists in the scene
@@ -148,7 +149,11 @@ public class GameManager : MonoBehaviour
   
   // Called when the game is over (player has no lives left)
   // Deactivates all game objects to show the game over state
-  private void GameOver(){
+  private void GameOver()
+    {
+        gameOverScreen.gameObject.SetActive(true);
+        gameOverScreen.Setup(score);
+
     // Loop through all ghost GameObjects in the array
     for (int i = 0 ; i < this.ghosts.Length; i++){
         // Deactivate each ghost GameObject
