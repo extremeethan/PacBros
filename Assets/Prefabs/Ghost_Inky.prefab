@@ -21,16 +21,32 @@ PrefabInstance:
       value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 1171715956672715030, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
+      propertyPath: m_Size.x
+      value: 4.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 1171715956672715030, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
+      propertyPath: m_Size.y
+      value: 3.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 1171715956672715030, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2951843035778274856, guid: fb1172258a6591b4b944e106d1f3b3c9, type: 3}
+    - target: {fileID: 1171715956672715030, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_Color.b
-      value: 0.33333334
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1171715956672715030, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_Color.g
-      value: 0.73333335
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1171715956672715030, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_Color.r
-      value: 0.972549
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1171715956672715030, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2607728198900302118, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: duration
@@ -44,9 +60,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ghost_Inky
       objectReference: {fileID: 0}
+    - target: {fileID: 3910941466051593001, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6794236725312374253, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835570857650871489, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835570857650871489, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835570857650871489, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 7835570857650871489, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 7835570857650871489, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -83,6 +119,10 @@ PrefabInstance:
     - target: {fileID: 7835570857650871489, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835570857650871489, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9135937089359219227, guid: ac51b4ef2cbfb5a4ca81bfab6a3e80d4, type: 3}
       propertyPath: m_Sprite
@@ -200,6 +240,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653602e770e365947a52e55e1c6285d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GhostHome
-  duration: 0
+  duration: 8
   inside: {fileID: 0}
   outside: {fileID: 0}

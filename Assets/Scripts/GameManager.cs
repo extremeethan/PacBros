@@ -2,19 +2,12 @@
 using UnityEngine;
 // Import Unity's new Input System for handling keyboard and mouse input
 using UnityEngine.InputSystem;
-// Import Unity's Scene Management system for loading levels and menus
 using UnityEngine.SceneManagement;
 
 // GameManager class that inherits from MonoBehaviour, allowing it to be attached to a GameObject
 // This class manages the overall game state, score, lives, and game flow
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private int firstGameplaySceneIndex = 2; // Level 1
-    [SerializeField] private int lastGameplaySceneIndex = 3; // Level 2
-
-    private int currentSceneIndex;
-    private bool isGameplayScene;
-
     // Static property that provides a singleton instance of GameManager
     // 'get' is public (anyone can read it), 'set' is private (only this class can set it)
     // This ensures only one GameManager exists in the scene
@@ -47,7 +40,6 @@ public class GameManager : MonoBehaviour
 
     // Awake is called when the script instance is being loaded, before Start()
     // This runs even if the GameObject is inactive, making it perfect for singleton setup
-
     private void Awake()
     {
         // Check if no GameManager instance has been set yet (first time this runs)
@@ -66,26 +58,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update, after Awake()
-    // This is where we initialize the game when the scene loads
-    private void Start()
-    {
-        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        isGameplayScene =
-           currentSceneIndex >= firstGameplaySceneIndex &&
-           currentSceneIndex <= lastGameplaySceneIndex;
-        if (isGameplayScene)
-        {
-            // Call NewGame() to set up the initial game state (score, lives, round)
-            NewGame();
-        }
-    }
+   // Start is called before the first frame update, after Awake()
+   // This is where we initialize the game when the scene loads
+   private void Start(){
+    // Call NewGame() to set up the initial game state (score, lives, round)
+    NewGame();
+   }
    
    // Update is called once per frame (typically 60 times per second)
    // This continuously checks for player input to restart the game when it's over
    private void Update()
    {
-        if (!isGameplayScene) return;
     // Check if any key on the keyboard was pressed this frame
     // First checks if Keyboard.current exists (keyboard is available)
     // Then checks if anyKey.wasPressedThisFrame (any key was just pressed)
@@ -178,18 +161,17 @@ public class GameManager : MonoBehaviour
     NewGame();
  }
   
-  // Called when a ghost is eaten by Pacman (during power pellet mode)
-  // Calculates points with multiplier and increases the multiplier for next ghost
+  // Block "ghost eaten" for this long after a power pellet is eaten (stops ghosts dying with no contact)
+  public static float PowerPelletEatenTime { get; private set; } = -999f;
+  const float GhostEatBlockSeconds = 2f;
+
   public void GhostEaten(Ghost ghost){
-    // Calculate points by multiplying the ghost's base points by the current multiplier
-    // First ghost = 200 * 1, second = 200 * 2, third = 200 * 3, etc.
+    if (Time.time - PowerPelletEatenTime < GhostEatBlockSeconds)
+      return;
     int points = ghost.points * this.ghostMultiplier;
-    // Add the calculated points to the current score
-    // Uses the current score plus the new points
     SetScore(this.score + points);
-    // Increment the multiplier for the next ghost eaten
-    // This increases the point value for consecutive ghost eats
     this.ghostMultiplier++;
+    ghost.EatenByPlayer();
 }
  
  // Called when Pacman is eaten by a ghost
@@ -222,24 +204,35 @@ public class GameManager : MonoBehaviour
         GameOver();
     }
 }
-
-    public void PelletEaten(Pellet pellet)
-    {
-        pellet.gameObject.SetActive(false);
-        SetScore(score + pellet.points);
-
-        if (pellets != null && !HasRemainingPellets())
-        {
-            Debug.Log("All pellets eaten – level complete");
-
-            pacman.SetActive(false);
-            Invoke(nameof(HandleLevelComplete), 3f);
-        }
+ 
+ // Called when a regular pellet is eaten by Pacman
+ // Handles pellet deactivation, scoring, and checks for round completion
+ public void PelletEaten(Pellet pellet){
+    // Deactivate the pellet GameObject so it disappears and can't be eaten again
+    // SetActive(false) makes it invisible and disables its collider
+    pellet.gameObject.SetActive(false);
+    
+    // Add the pellet's point value to the current score
+    // Uses the current score plus the pellet's points property
+    SetScore(this.score + pellet.points);
+    
+    // Check if there are any remaining pellets in the scene
+    // Only proceed if pellets Transform exists AND no pellets remain
+    if(this.pellets != null && !HasRemainingPellets()){
+        // Output debug message when all pellets are collected
+        Debug.Log("All pellets eaten - loading next level");
+        
+        // Hide Pacman temporarily before loading the next level
+        this.pacman.gameObject.SetActive(false);
+        
+        // Wait 3 seconds then load the next level (Level_02)
+        Invoke(nameof(LoadNextLevel), 3f);
     }
-
-    // Called when a power pellet is eaten by Pacman
-    // Handles power pellet effects like making ghosts vulnerable
-    public void PowerPelletEaten(PowerPellet powerPellet){
+}
+ 
+ // Called when a power pellet is eaten by Pacman
+ // Handles power pellet effects like making ghosts vulnerable
+ public void PowerPelletEaten(PowerPellet powerPellet){
     // First handle it like a regular pellet (deactivate, add points, check for round completion)
     // PowerPellet inherits from Pellet, so this works correctly
     PelletEaten(powerPellet);
@@ -249,36 +242,23 @@ public class GameManager : MonoBehaviour
     // This ensures the multiplier resets when the power pellet effect ends
     Invoke(nameof(ResetGhostMultiplier), powerPellet.duration);
     
-    // TODO: Change ghost state to vulnerable/frightened mode
-    // This would make ghosts edible and change their behavior
-}
-    private void HandleLevelComplete()
+    PowerPelletEatenTime = Time.time;
+    // Put all ghosts in the array into frightened state
+    for (int i = 0; i < ghosts.Length; i++)
     {
-        // If this was the last gameplay level, stop the game
-        if (currentSceneIndex >= lastGameplaySceneIndex)
+        Ghost g = ghosts[i].GetComponent<Ghost>();
+        if (g != null)
         {
-            Debug.Log("Final level completed - game finished");
-
-            for (int i = 0; i < ghosts.Length; i++)
-            {
-                ghosts[i].SetActive(false);
-            }
-
-            pacman.SetActive(false);
-
-            Time.timeScale = 0f;
-
-            // End Screen??
-        }
-        else
-        {
-            SceneManager.LoadScene(currentSceneIndex + 1);
+            g.chase.Disable();
+            g.scatter.Disable();
+            g.frightened.Enable(powerPellet.duration);
         }
     }
+}
 
-    // Checks if there are any active pellets remaining in the scene
-    // Returns true if at least one pellet is still active, false if all are collected
-    private bool HasRemainingPellets(){
+// Checks if there are any active pellets remaining in the scene
+// Returns true if at least one pellet is still active, false if all are collected
+private bool HasRemainingPellets(){
     // Find all Pellet components in the entire scene, regardless of hierarchy
     // FindObjectsByType searches all GameObjects for Pellet components
     // FindObjectsSortMode.None means don't sort the results (faster)
@@ -305,5 +285,9 @@ private void ResetGhostMultiplier(){
     // Set the multiplier back to its starting value of 1
     // This means the next ghost eaten will give base points (no multiplier)
     this.ghostMultiplier = 1;
+}
+// Loads the next level
+private void LoadNextLevel(){
+    SceneManager.LoadScene("Level_02");
 }
 }
