@@ -1,2 +1,17 @@
 fileFormatVersion: 2
 guid: c03f70226da69d040a6509b644d80555
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - pacman: {fileID: 564966448506997976, guid: fe80cc94ec632d44b8dbee969f0601b6, type: 3}
+  - pellets: {instanceID: 0}
+  - audioSource: {instanceID: 0}
+  - pelletSound: {fileID: 8300000, guid: 25ea57883ecbd114597051732cb5b00e, type: 3}
+  - pacmanDeathSound: {fileID: 8300000, guid: cd79b81c7eb7e784f951d1c75ca8b532, type: 3}
+  - powerPelletSound: {fileID: 8300000, guid: d20174feaf9d8504db985cad060b9c7a, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
