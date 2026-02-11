@@ -4,9 +4,10 @@ public class Pellet : MonoBehaviour
 {
     public int points = 10;
 
-    protected virtual void Eat()// protected virtual void Eat() is a virtual method that can be overridden by subclasses
+    protected virtual void Eat()
     {
-        FindFirstObjectByType<GameManager>().PelletEaten(this);
+        var gm = FindFirstObjectByType<GameManager>();
+        if (gm != null) gm.PelletEaten(this);
     }
     private void OnTriggerEnter2D(Collider2D other)
     {

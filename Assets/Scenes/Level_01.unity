@@ -119,6 +119,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &85698841
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 85698842}
+  m_Layer: 0
+  m_Name: OutsideHouse
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &85698842
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85698841}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.5, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &157525975 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4324853877746928917, guid: 7660082959722ad47a1e982ed8f7dd42, type: 3}
@@ -164,6 +195,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5745369225149608944}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &463689131
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 463689132}
+  m_Layer: 0
+  m_Name: InsideHouse
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &463689132
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463689131}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -536,13 +598,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5246695382754102749, guid: 21c584dc203938049ae8d6fcfb6e894c, type: 3}
+      propertyPath: inside
+      value: 
+      objectReference: {fileID: 463689132}
+    - target: {fileID: 5246695382754102749, guid: 21c584dc203938049ae8d6fcfb6e894c, type: 3}
+      propertyPath: outside
+      value: 
+      objectReference: {fileID: 85698842}
+    - target: {fileID: 5246695382754102749, guid: 21c584dc203938049ae8d6fcfb6e894c, type: 3}
+      propertyPath: releaseDelay
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 6081094930622742440, guid: 21c584dc203938049ae8d6fcfb6e894c, type: 3}
       propertyPath: m_Name
       value: Ghost_Clyde
       objectReference: {fileID: 0}
     - target: {fileID: 6667281566775785635, guid: 21c584dc203938049ae8d6fcfb6e894c, type: 3}
       propertyPath: m_Radius
-      value: 1
+      value: 1.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -610,6 +684,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 314322964}
     - target: {fileID: 5246695382754102749, guid: 12340567eb9725b4ea227f802ff0fab0, type: 3}
+      propertyPath: inside
+      value: 
+      objectReference: {fileID: 463689132}
+    - target: {fileID: 5246695382754102749, guid: 12340567eb9725b4ea227f802ff0fab0, type: 3}
+      propertyPath: outside
+      value: 
+      objectReference: {fileID: 85698842}
+    - target: {fileID: 5246695382754102749, guid: 12340567eb9725b4ea227f802ff0fab0, type: 3}
       propertyPath: duration
       value: 1
       objectReference: {fileID: 0}
@@ -627,7 +709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6667281566775785635, guid: 12340567eb9725b4ea227f802ff0fab0, type: 3}
       propertyPath: m_Radius
-      value: 1
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 7628455261134503857, guid: 12340567eb9725b4ea227f802ff0fab0, type: 3}
       propertyPath: initialDirection.x
@@ -798,7 +880,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1759974776891553278, guid: 21edc8dca8b2ba745852c8eb660ccc11, type: 3}
       propertyPath: m_Radius
-      value: 1
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 4309282465088435896, guid: 21edc8dca8b2ba745852c8eb660ccc11, type: 3}
       propertyPath: target
@@ -864,6 +946,10 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7219963647195309220, guid: 21edc8dca8b2ba745852c8eb660ccc11, type: 3}
+      propertyPath: outside
+      value: 
+      objectReference: {fileID: 85698842}
     - target: {fileID: 7219963647195309220, guid: 21edc8dca8b2ba745852c8eb660ccc11, type: 3}
       propertyPath: mazeStartPosition.y
       value: 2.5
@@ -1440,6 +1526,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5246695382754102749, guid: 5a99274279556b7479167059b59c900d, type: 3}
+      propertyPath: inside
+      value: 
+      objectReference: {fileID: 463689132}
+    - target: {fileID: 5246695382754102749, guid: 5a99274279556b7479167059b59c900d, type: 3}
+      propertyPath: outside
+      value: 
+      objectReference: {fileID: 85698842}
+    - target: {fileID: 5246695382754102749, guid: 5a99274279556b7479167059b59c900d, type: 3}
+      propertyPath: releaseDelay
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246695382754102749, guid: 5a99274279556b7479167059b59c900d, type: 3}
       propertyPath: mazeStartPosition.y
       value: 2.5
       objectReference: {fileID: 0}
@@ -1461,7 +1559,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6667281566775785635, guid: 5a99274279556b7479167059b59c900d, type: 3}
       propertyPath: m_Radius
-      value: 1
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 7628455261134503857, guid: 5a99274279556b7479167059b59c900d, type: 3}
       propertyPath: initialDirection.x
@@ -6328,6 +6426,8 @@ SceneRoots:
   - {fileID: 1659384930972422092}
   - {fileID: 519420032}
   - {fileID: 619394802}
+  - {fileID: 463689132}
+  - {fileID: 85698842}
   - {fileID: 5745369225149608943}
   - {fileID: 4994424473918270358}
   - {fileID: 1034936684}

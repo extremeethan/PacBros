@@ -6,6 +6,7 @@ public class PowerPellet : Pellet
     // override the Eat method to call the PowerPelletEaten method in the GameManager
     protected override void Eat()
     {
-        FindFirstObjectByType<GameManager>().PowerPelletEaten(this);
+        var gm = FindFirstObjectByType<GameManager>();
+        if (gm != null) gm.PowerPelletEaten(this);
     }
 }

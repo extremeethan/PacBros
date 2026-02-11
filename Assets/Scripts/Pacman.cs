@@ -36,4 +36,18 @@ public class Pacman : MonoBehaviour
         this.gameObject.SetActive(true); // set the game object to active
         this.movement.ResetState(); // reset the state of the movement
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Ghost g = other.GetComponent<Ghost>();
+        if (g != null && g.frightened != null && g.frightened.enabled)
+            FindFirstObjectByType<GameManager>().GhostEaten(g);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Ghost g = collision.gameObject.GetComponent<Ghost>();
+        if (g != null && g.frightened != null && g.frightened.enabled)
+            FindFirstObjectByType<GameManager>().GhostEaten(g);
+    }
 }

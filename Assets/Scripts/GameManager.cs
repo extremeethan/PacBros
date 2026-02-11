@@ -54,9 +54,14 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             SceneManager.sceneLoaded += OnSceneLoaded;
+            if (audioSource == null) audioSource = GetComponent<AudioSource>();
         }
         else
         {
+            // Copy this level's audio to the persistent Instance before we're destroyed
+            if (pelletSound != null) Instance.pelletSound = pelletSound;
+            if (pacmanDeathSound != null) Instance.pacmanDeathSound = pacmanDeathSound;
+            if (powerPelletSound != null) Instance.powerPelletSound = powerPelletSound;
             Destroy(gameObject);
         }
     }
@@ -176,35 +181,36 @@ public class GameManager : MonoBehaviour
     if (ghosts == null || pacman == null) return;
     ResetGhostMultiplier();
     
-    // Loop through all ghost GameObjects in the array
-    // Start at index 0, continue while i is less than the array length, increment i each iteration
-    for(int i = 0; i < this.ghosts.Length; i++){
-        // Reactivate each ghost GameObject at index i
-        // Get the Ghost component and call ResetState() to reset its state
-        this.ghosts[i].GetComponent<Ghost>().ResetState();
+    for (int i = 0; i < this.ghosts.Length; i++)
+    {
+        if (this.ghosts[i] == null) continue;
+        Ghost g = this.ghosts[i].GetComponent<Ghost>();
+        if (g != null) g.ResetState();
     }
-    // Reactivate the Pacman GameObject so the player can continue playing
-    // Get the Pacman component and call ResetState() to reset its state
-    this.pacman.GetComponent<Pacman>().ResetState();
+    Pacman p = this.pacman.GetComponent<Pacman>();
+    if (p != null) p.ResetState();
  }
   
   // Called when the game is over (player has no lives left)
   // Deactivates all game objects to show the game over state
   private void GameOver()
+  {
+    if (ghosts != null)
     {
-    // Loop through all ghost GameObjects in the array
-    Debug.Log("[GameManager] GameOver() - deactivating ghosts");
-    for (int i = 0 ; i < this.ghosts.Length; i++){
-        // Deactivate each ghost GameObject
-        // SetActive(false) makes the ghost invisible and inactive
-        this.ghosts[i].gameObject.SetActive(false);
+        Debug.Log("[GameManager] GameOver() - deactivating ghosts");
+        for (int i = 0; i < this.ghosts.Length; i++)
+        {
+            if (this.ghosts[i] != null)
+                this.ghosts[i].SetActive(false);
+        }
     }
-    // Deactivate the Pacman GameObject
-    // SetActive(false) makes Pacman invisible and stops player control
-    Debug.Log("[GameManager] GameOver() - deactivating Pacman");
-    this.pacman.gameObject.SetActive(false);
-        SceneManager.LoadScene("GameOver");
- }
+    if (pacman != null)
+    {
+        Debug.Log("[GameManager] GameOver() - deactivating Pacman");
+        this.pacman.SetActive(false);
+    }
+    SceneManager.LoadScene("GameOver");
+  }
   
   // Block "ghost eaten" for this long after a power pellet is eaten (stops ghosts dying with no contact)
   public static float PowerPelletEatenTime { get; private set; } = -999f;
@@ -232,7 +238,7 @@ public class GameManager : MonoBehaviour
 
         // Immediately hide Pacman when eaten
         // SetActive(false) makes Pacman invisible and stops movement
-        this.pacman.gameObject.SetActive(false);
+        if (this.pacman != null) this.pacman.SetActive(false);
     
     // Decrease the player's lives by 1
     // Uses current lives minus 1
@@ -257,6 +263,7 @@ public class GameManager : MonoBehaviour
  // Called when a regular pellet is eaten by Pacman
  // Handles pellet deactivation, scoring, and checks for round completion
  public void PelletEaten(Pellet pellet){
+    if (pellet == null) return;
         // pellet sound
         if (audioSource != null && pelletSound != null)
         {
@@ -276,8 +283,7 @@ public class GameManager : MonoBehaviour
         // Output debug message when all pellets are collected
         Debug.Log("All pellets eaten - loading next level");
         
-        // Hide Pacman temporarily before loading the next level
-        this.pacman.gameObject.SetActive(false);
+        if (this.pacman != null) this.pacman.SetActive(false);
         
         // Wait 3 seconds then load the next level (Level_02)
         Invoke(nameof(LoadNextLevel), 3f);
@@ -287,6 +293,7 @@ public class GameManager : MonoBehaviour
  // Called when a power pellet is eaten by Pacman
  // Handles power pellet effects like making ghosts vulnerable
  public void PowerPelletEaten(PowerPellet powerPellet){
+    if (powerPellet == null) return;
 
         if (audioSource != null && powerPelletSound != null)
         {
@@ -305,8 +312,9 @@ public class GameManager : MonoBehaviour
     if (ghosts == null || ghosts.Length == 0) return;
     for (int i = 0; i < ghosts.Length; i++)
     {
+        if (ghosts[i] == null) continue;
         Ghost g = ghosts[i].GetComponent<Ghost>();
-        if (g != null)
+        if (g != null && g.chase != null && g.scatter != null && g.frightened != null)
         {
             g.chase.Disable();
             g.scatter.Disable();

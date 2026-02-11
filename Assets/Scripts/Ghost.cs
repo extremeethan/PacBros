@@ -60,6 +60,7 @@ public void Start()
         IsResetting = true; // set the is resetting flag to true
         this.gameObject.SetActive(true);
         this.movement.ResetState(); // reset the state of the movement
+        this.movement.SetDirection(this.movement.initialDirection, true); // use initial direction at level/round start
         SetSpriteState(SpriteState.Normal); // set the sprite state to normal
         this.frightened.Disable(); // disable the frightened behavior
         this.chase.Disable(); // disable the chase behavior
@@ -79,6 +80,7 @@ public void Start()
     }
 
     public void EatenByPlayer(){
+        if (!movement.enabled && deadSprite != null && deadSprite.activeSelf) return; // already eaten, avoid double-handling
         StopAllCoroutines(); // stop all coroutines 
         frightened.Disable();
         chase.Disable(); // disable the chase behavior
@@ -101,16 +103,22 @@ public void Start()
         scatter.Enable(); // enable the scatter behavior
     }
     // Only handle "ghost caught player" — "player ate ghost" is handled in GhostFrightened when that behavior is enabled
+    // Don't call PacmanEaten if we're already in eaten state (GhostFrightened may have run first and disabled itself)
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (IsPlayer(collision.gameObject) && !frightened.enabled) // if the collision is a player and the frightened behavior is not enabled
+        if (IsPlayer(collision.gameObject) && !frightened.enabled && !IsInEatenState())
             FindFirstObjectByType<GameManager>().PacmanEaten();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (IsPlayer(other.gameObject) && !frightened.enabled) // if the other is a player and the frightened behavior is not enabled
+        if (IsPlayer(other.gameObject) && !frightened.enabled && !IsInEatenState())
             FindFirstObjectByType<GameManager>().PacmanEaten();
+    }
+
+    private bool IsInEatenState()
+    {
+        return (deadSprite != null && deadSprite.activeSelf) || !movement.enabled;
     }
 
     internal static bool IsPlayer(GameObject go)
