@@ -542,7 +542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6667281566775785635, guid: 21c584dc203938049ae8d6fcfb6e894c, type: 3}
       propertyPath: m_Radius
-      value: 1.3
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -627,7 +627,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6667281566775785635, guid: 12340567eb9725b4ea227f802ff0fab0, type: 3}
       propertyPath: m_Radius
-      value: 1.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7628455261134503857, guid: 12340567eb9725b4ea227f802ff0fab0, type: 3}
       propertyPath: initialDirection.x
@@ -798,7 +798,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1759974776891553278, guid: 21edc8dca8b2ba745852c8eb660ccc11, type: 3}
       propertyPath: m_Radius
-      value: 1.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4309282465088435896, guid: 21edc8dca8b2ba745852c8eb660ccc11, type: 3}
       propertyPath: target
@@ -1461,7 +1461,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6667281566775785635, guid: 5a99274279556b7479167059b59c900d, type: 3}
       propertyPath: m_Radius
-      value: 1.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7628455261134503857, guid: 5a99274279556b7479167059b59c900d, type: 3}
       propertyPath: initialDirection.x
@@ -5027,6 +5027,10 @@ PrefabInstance:
     - target: {fileID: 7373519676407889831, guid: 7660082959722ad47a1e982ed8f7dd42, type: 3}
       propertyPath: m_TileColorArray.Array.data[0].m_RefCount
       value: 246
+      objectReference: {fileID: 0}
+    - target: {fileID: 7373519676407889831, guid: 7660082959722ad47a1e982ed8f7dd42, type: 3}
+      propertyPath: m_TileObjectToInstantiateArray.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7373519676407889831, guid: 7660082959722ad47a1e982ed8f7dd42, type: 3}
       propertyPath: m_Tiles.Array.data[38].second.m_TileIndex

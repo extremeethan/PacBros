@@ -45,30 +45,69 @@ public class GameManager : MonoBehaviour
     // Public getter allows reading, private setter ensures lives are only changed through proper methods
     public int lives { get; private set; }
 
-    // Awake is called when the script instance is being loaded, before Start()
-    // This runs even if the GameObject is inactive, making it perfect for singleton setup
+    bool _gameStarted;
+
     private void Awake()
     {
-        // Check if no GameManager instance has been set yet (first time this runs)
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Keep GameManager across scene loads (Game Over, YouWin, next level) so score/lives persist
+            DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
-        // If an instance already exists (duplicate GameManager found)
         else
         {
-            // Destroy this duplicate GameObject to ensure only one GameManager exists
-            // Prevents multiple GameManagers from conflicting with each other
             Destroy(gameObject);
         }
     }
 
+    private void OnDestroy()
+    {
+        if (Instance == this)
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "Main Menu" || scene.name == "GameOver" || scene.name == "YouWin")
+        {
+            _gameStarted = false;
+            return;
+        }
+        if (!scene.name.Contains("Level")) return;
+
+        StartCoroutine(BindLevelRefsNextFrame());
+    }
+
+    System.Collections.IEnumerator BindLevelRefsNextFrame()
+    {
+        yield return null; // Wait one frame so the scene is fully active
+        var p = FindFirstObjectByType<Pacman>();
+        pacman = p != null ? p.gameObject : null;
+        var ghostList = FindObjectsByType<Ghost>(FindObjectsSortMode.None);
+        if (ghostList != null && ghostList.Length > 0)
+        {
+            ghosts = new GameObject[ghostList.Length];
+            for (int i = 0; i < ghostList.Length; i++)
+                ghosts[i] = ghostList[i].gameObject;
+        }
+        var firstPellet = FindFirstObjectByType<Pellet>();
+        pellets = firstPellet != null ? firstPellet.transform.parent : null;
+
+        if (!_gameStarted)
+        {
+            _gameStarted = true;
+            SetScore(0);
+            SetLives(3);
+        }
+        NewRound();
+    }
+
    // Start is called before the first frame update, after Awake()
-   // This is where we initialize the game when the scene loads
    private void Start(){
-    // Call NewGame() to set up the initial game state (score, lives, round)
-    NewGame();
+    // Only run level setup when this scene has gameplay refs. Skip on Main Menu / Game Over / YouWin.
+    if (pellets != null && pacman != null && ghosts != null && ghosts.Length > 0)
+        NewGame();
    }
    
    // Update is called once per frame (typically 60 times per second)
@@ -123,21 +162,18 @@ public class GameManager : MonoBehaviour
 
   // Starts a new round - reactivates all pellets and resets game object positions
   private void NewRound(){
-    // Loop through each child Transform in the pellets parent object
-    // 'pellets' is the loop variable (each individual pellet Transform)
-    // 'this.pellets' is the parent Transform containing all pellets
-    foreach (Transform pellets in this.pellets){
+    if (this.pellets == null) return; // Not in a gameplay scene (e.g. Main Menu)
+    foreach (Transform pellet in this.pellets){
         // Reactivate each pellet GameObject so it can be collected again
         // SetActive(true) makes the GameObject visible and interactive
-        pellets.gameObject.SetActive(true);
+        pellet.gameObject.SetActive(true);
     }
-    // Reset the positions and states of Pacman and ghosts
     ResetState();
 }
   
   // Resets the game state for a new round - reactivates Pacman and ghosts, resets multiplier
   private void ResetState(){
-    // Reset the ghost multiplier back to 1 (no bonus points)
+    if (ghosts == null || pacman == null) return;
     ResetGhostMultiplier();
     
     // Loop through all ghost GameObjects in the array
@@ -186,8 +222,7 @@ public class GameManager : MonoBehaviour
  // Called when Pacman is eaten by a ghost
  // Handles life loss and either resets the round or ends the game
  public void PacmanEaten(){
-    // Output a debug message to the console for troubleshooting
-    // Helps identify when and why Pacman is being disabled
+    if (pacman == null) return;
     Debug.Log("PacmanEaten called");
 
     if (audioSource != null && pacmanDeathSound != null)
@@ -267,7 +302,7 @@ public class GameManager : MonoBehaviour
     Invoke(nameof(ResetGhostMultiplier), powerPellet.duration);
     
     PowerPelletEatenTime = Time.time;
-    // Put all ghosts in the array into frightened state
+    if (ghosts == null || ghosts.Length == 0) return;
     for (int i = 0; i < ghosts.Length; i++)
     {
         Ghost g = ghosts[i].GetComponent<Ghost>();
